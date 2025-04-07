@@ -1,0 +1,24 @@
+﻿<Window x:Class="StudentCouncilActivity.StudentsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentCouncilActivity"
+        mc:Ignorable="d"
+        Title="Студенческий совет" Height="650" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="135"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Rectangle HorizontalAlignment="Center" Height="135" Grid.Row="0" Fill="#CDDEFF" VerticalAlignment="Top" Width="1000"/>
+        <Frame x:Name="mainFrame" Grid.Row="1"/>
+        <Button x:Name="Profil" Content="Профиль" Style="{DynamicResource ShapkaButton}" FontSize="20" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="40" Width="150" Click="Profil_Click"/>
+        <Button x:Name="Sectors" Content="Сектора" Style="{DynamicResource ShapkaButton}" FontSize="20" HorizontalAlignment="Left" Margin="40,74,0,0" VerticalAlignment="Top" Height="40" Width="150" Click="Sectors_Click"/>
+        <Button x:Name="Registration" Content="Регистрация" Style="{DynamicResource ShapkaButton}" FontSize="20" HorizontalAlignment="Left" Margin="220,74,0,0" VerticalAlignment="Top" Height="40" Width="150" Click="Registration_Click"/>
+        <Button x:Name="Events" Content="Мероприятия" Style="{DynamicResource ShapkaButton}" FontSize="20" HorizontalAlignment="Left" Margin="220,20,0,0" VerticalAlignment="Top" Height="40" Width="150" Click="Events_Click" />
+        <Button x:Name="Tasks" Content="Задания" Style="{DynamicResource ShapkaButton}" FontSize="20" HorizontalAlignment="Left" Margin="400,20,0,0" VerticalAlignment="Top" Height="40" Width="150" Click="Tasks_Click" />
+        <Button x:Name="Tops" Content="Рейтинг" Style="{DynamicResource ShapkaButton}" FontSize="20" HorizontalAlignment="Left" Margin="400,74,0,0" VerticalAlignment="Top" Height="40" Width="150" Click="Tops_Click"/>
+        <Button x:Name="Exit" Content="Выйти" Style="{DynamicResource ShapkaButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,20,40,0" VerticalAlignment="Top" Height="40" Width="150" Click="Exit_Click" />
+    </Grid>
+</Window>

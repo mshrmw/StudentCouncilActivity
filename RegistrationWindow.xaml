@@ -1,0 +1,46 @@
+﻿<Window x:Class="StudentCouncilActivity.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentCouncilActivity"
+        mc:Ignorable="d"
+        Title="Регистрация" Height="650" Width="1000">
+    <Grid Margin="0,-4,0,4">
+        <Label Content="Регистрация" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="FuturaMediumC" FontSize="54" Foreground="#1F1F1F" Margin="0,14,0,0"/>
+        <TextBox x:Name="FIO" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="400" Height="40" VerticalAlignment="Top" Margin="40,133,0,0"/>
+        <Button Content="Зарегистрироваться" Style="{DynamicResource MainButton}" FontSize="38" HorizontalAlignment="Center" Width="390" Height="60" VerticalAlignment="Top" Margin="0,491,0,0" BorderThickness="0,1,1,1" RenderTransformOrigin="20,20" Click="ButtonReg"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,564,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="132" FontFamily="FuturaBookC" FontSize="18" TextAlignment="Center" Text="Есть аккаунт?"/>
+        <TextBlock HorizontalAlignment="Left" Margin="491,564,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" Width="117" FontFamily="FuturaBookC" FontSize="18" TextAlignment="Center" Foreground="#5A81FA">
+    <Hyperlink Click="HyperlinkClick">
+        <Run Text="Войти"/>
+    </Hyperlink>
+        </TextBlock>
+        <Label Content="Ф. И. О." HorizontalAlignment="Left" Margin="34,99,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="108,96,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="34,185,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <TextBox x:Name="StudentsCardNumber" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="400" Height="40" VerticalAlignment="Top" Margin="40,307,0,0"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="173,184,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <DatePicker x:Name="DateOfBirth" HorizontalAlignment="Left" Margin="40,222,0,0" VerticalAlignment="Top" Width="400" Height="40" FontSize="22" FontFamily="FuturaBookC"/>
+        <Label Content="Номер студенческого билета" HorizontalAlignment="Left" Margin="34,275,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="Курс" HorizontalAlignment="Left" Margin="34,354,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="295,273,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="78,352,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <TextBox x:Name="Course" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="100" Height="40" VerticalAlignment="Top" Margin="40,387,0,0"/>
+        <Label Content="Номер группы" HorizontalAlignment="Left" Margin="174,354,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="302,352,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <TextBox x:Name="Group" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="260" Height="40" VerticalAlignment="Top" Margin="180,387,0,0"/>
+        <TextBox x:Name="Email" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Right" Width="400" Height="40" VerticalAlignment="Top" Margin="0,133,40,0"/>
+        <Label Content="Email" HorizontalAlignment="Right" Margin="0,99,389,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="*" HorizontalAlignment="Right" Margin="0,96,374,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <Label Content="Логин" HorizontalAlignment="Right" Margin="0,185,378,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <TextBox x:Name="login" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Right" Width="400" Height="40" VerticalAlignment="Top" Margin="0,222,40,0"/>
+        <Label Content="*" HorizontalAlignment="Right" Margin="0,184,365,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <Label Content="Пароль" HorizontalAlignment="Right" Margin="0,275,365,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="*" HorizontalAlignment="Right" Margin="0,273,352,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Right" Width="400" Height="40" VerticalAlignment="Top" Margin="0,307,40,0" FontSize="22" FontFamily="FuturaBookC"/>
+        <Label Content="Подтверждение пароля" HorizontalAlignment="Right" Margin="0,354,222,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="*" HorizontalAlignment="Right" Margin="0,352,210,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <PasswordBox x:Name="passwordProverka" HorizontalAlignment="Right" Width="400" Height="40" VerticalAlignment="Top" Margin="0,387,40,0" FontSize="22" FontFamily="FuturaBookC"/>
+    </Grid>
+</Window>
