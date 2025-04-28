@@ -12,30 +12,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static StudentCouncilActivity.CoordinatorWindow;
 
 namespace StudentCouncilActivity
 {
     /// <summary>
-    /// Логика взаимодействия для PageEventsCoordinator.xaml
+    /// Логика взаимодействия для PageEventsPredsed.xaml
     /// </summary>
-    public partial class PageEventsCoordinator : Page
+    public partial class PageEventsPredsed : Page
     {
-        private CoordinatorWindow _coordinatorWindow;
-        public PageEventsCoordinator(CoordinatorWindow coordinatorWindow)
+        private PredsedWindow _predsedWindow;
+        public PageEventsPredsed(PredsedWindow predsedWindow)
         {
             InitializeComponent();
-            _coordinatorWindow = coordinatorWindow;
+            _predsedWindow = predsedWindow;
         }
 
         private void CreateEvent_Click(object sender, RoutedEventArgs e)
         {
-            _coordinatorWindow.mainFrame.Navigate(new PageCreateEventsCoordinator(_coordinatorWindow));
+            _predsedWindow.mainFrame.Navigate(new PageCreateEventsPredsed(_predsedWindow));
         }
 
         private void EditEvent_Click(object sender, RoutedEventArgs e)
         {
-            _coordinatorWindow.mainFrame.Navigate(new PageEditEventsCoordinator(_coordinatorWindow));
+            _predsedWindow.mainFrame.Navigate(new PageEditEventsPredsed(_predsedWindow));
         }
     }
 }

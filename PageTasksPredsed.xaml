@@ -1,4 +1,4 @@
-﻿<Page x:Class="StudentCouncilActivity.PageTasksStudent"
+﻿<Page x:Class="StudentCouncilActivity.PageTasksPredsed"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,12 +10,15 @@
 
     <Grid Background="White">
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="400" HorizontalAlignment="Left" Margin="30,30,0,30"/>
-        <Button x:Name="ExecuteTask" Content="Выполнить" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250"/>
-        <Button x:Name="DeleteTask" Content="Удалить" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,80" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <Button x:Name="ExecuteTask" Content="Выполнить" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,124" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <Button x:Name="DeleteTask" Content="Удалить" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,174" VerticalAlignment="Bottom" Height="40" Width="250"/>
         <ComboBox HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="35" Width="250">
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Все задания</TextBlock>
             <TextBlock FontFamily="FuturaBookC" FontSize="18">Выполненные задания</TextBlock>
             <TextBlock FontFamily="FuturaBookC" FontSize="18">Невыполненные задания</TextBlock>
         </ComboBox>
         <Button x:Name="FilterTasks" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,80,30,0" VerticalAlignment="Top" Height="40" Width="250"/>
+        <Button x:Name="CreateTask" Content="Создать задание" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="CreateTask_Click"/>
+
     </Grid>
 </Page>

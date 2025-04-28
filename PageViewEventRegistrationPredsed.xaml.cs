@@ -16,21 +16,13 @@ using System.Windows.Shapes;
 namespace StudentCouncilActivity
 {
     /// <summary>
-    /// Логика взаимодействия для PageTasksCoordinator.xaml
+    /// Логика взаимодействия для PageViewEventRegistrationPredsed.xaml
     /// </summary>
-    public partial class PageTasksCoordinator : Page
+    public partial class PageViewEventRegistrationPredsed : Page
     {
-        private CoordinatorWindow _coordinatorWindow;
-        public PageTasksCoordinator(CoordinatorWindow coordinatorWindow)
+        public PageViewEventRegistrationPredsed()
         {
             InitializeComponent();
-            _coordinatorWindow = coordinatorWindow;
-
-        }
-
-        private void CreateTask_Click(object sender, RoutedEventArgs e)
-        {
-            _coordinatorWindow.mainFrame.Navigate(new PageCreateTasksCoordinator(_coordinatorWindow));
         }
     }
 }

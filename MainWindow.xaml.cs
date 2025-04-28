@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,40 +40,65 @@ namespace StudentCouncilActivity
             registrationWindow.Show();
             this.Close();
         }
+        public static string GetHash(string password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+            }
+        }
         private void ButtonWelcome(object sender, RoutedEventArgs e)
         {
-            string log = login.Text;
-            string pass = password.Password;
-            if (log == "" || pass == "")
+            string pass = GetHash(password.Password);
+            Auth(login.Text, pass);
+        }
+        public bool Auth(String log, String pass)
+        {
+            if (string.IsNullOrEmpty(log) && string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show("Введите логин и пароль");
-                return;
+                return false;
             }
-            User user = App.Users.FirstOrDefault(u => u.Login == log && u.Password == pass);
-
-            if (user != null)
+            if (string.IsNullOrEmpty(log))
             {
-                MessageBox.Show("Успешный вход!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Введите логин");
+                return false;
+            }
+            if (string.IsNullOrEmpty(pass))
+            {
+                MessageBox.Show("Введите пароль");
+                return false;
+            }
+            using (var db = new studDB())
+            {
+                var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == log && u.Password == pass);
 
-                if (user.Role == 1)
+                if (user == null)
                 {
-                    CoordinatorWindow coordinatorWindow = new CoordinatorWindow();
-                    coordinatorWindow.Show();
+                    MessageBox.Show("Пользователь с такими данными не найден");
+                    return false;
                 }
-                else
+                if (user.Role == "student")
                 {
+                    MessageBox.Show("Успешный вход в систему!");
                     StudentsWindow studentsWindow = new StudentsWindow();
                     studentsWindow.Show();
                 }
-
+                else if (user.Role == "coordinator")
+                {
+                    MessageBox.Show("Успешный вход в систему!");
+                    CoordinatorWindow coordinatorWindow = new CoordinatorWindow();
+                    coordinatorWindow.Show();
+                }
+                else if (user.Role == "admin")
+                {
+                    MessageBox.Show("Успешный вход в систему!");
+                    PredsedWindow predsedWindow = new PredsedWindow();
+                    predsedWindow.Show();
+                }
                 this.Close();
+                return true;
             }
-            else
-            {
-                MessageBox.Show("Неверный логин или пароль");
-                return;
-            }
-
         }
     }
 }

@@ -9,12 +9,14 @@
       Title="Сектора">
 
     <Grid Background="White">
-        <Label Content="Сектора, в которых Вы состоите" FontFamily="FuturaBookC" FontSize="22" HorizontalAlignment="Left" Margin="25,15,0,0" VerticalAlignment="Top"/>
-        <Label Content="Все сектора колледжа" FontFamily="FuturaBookC" FontSize="22" HorizontalAlignment="Right" Margin="0,15,173,0" VerticalAlignment="Top"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="350" Height="300" HorizontalAlignment="Left" Margin="30,51,0,99"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="350" Height="300" HorizontalAlignment="Right" Margin="0,51,30,99"/>
-        <Button x:Name="ExitFromSectors" Content="Выйти из сектора" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Left" Margin="80,0,0,42" VerticalAlignment="Bottom" Height="40" Width="250"/>
-        <Button x:Name="JoinFromSectors" Content="Вступить в сектор" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,80,42" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="399" HorizontalAlignment="Left" Margin="30,30,0,30"/>
+        <Button x:Name="ExitFromSectors" Content="Выйти из сектора" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,80" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <Button x:Name="JoinFromSectors" Content="Вступить в сектор" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <ComboBox HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="35" Width="250">
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Сектора, в которых Вы состоите</TextBlock>
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Все сектора колледжа</TextBlock>
+        </ComboBox>
+        <Button x:Name="FilterSectors" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,85,30,0" VerticalAlignment="Top" Height="40" Width="250"/>
 
     </Grid>
 </Page>

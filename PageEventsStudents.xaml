@@ -9,9 +9,12 @@
       Title="Мероприятия">
 
     <Grid Background="White" >
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="450" Height="400" HorizontalAlignment="Left" Margin="30,26,0,24"/>
-        <Button x:Name="FilterEvents" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,40,42" VerticalAlignment="Bottom" Height="40" Width="250"/>
-        <ComboBox HorizontalAlignment="Right" Margin="0,0,40,93" VerticalAlignment="Bottom" Height="35" Width="250"/>
-
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="450" HorizontalAlignment="Left" Margin="30,30,0,30"/>
+        <Button x:Name="FilterEvents" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,32" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <ComboBox HorizontalAlignment="Right" Margin="0,0,30,83" VerticalAlignment="Bottom" Height="35" Width="250">
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Все мероприятия</TextBlock>
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Новые мероприятия</TextBlock>
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Прошедшие мероприятия</TextBlock>
+        </ComboBox>
     </Grid>
 </Page>

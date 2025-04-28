@@ -16,20 +16,15 @@ using System.Windows.Shapes;
 namespace StudentCouncilActivity
 {
     /// <summary>
-    /// Логика взаимодействия для PageRegistrationCoordinator.xaml
+    /// Логика взаимодействия для PageViewEventRegistrationCoordinator.xaml
     /// </summary>
-    public partial class PageRegistrationCoordinator : Page
+    public partial class PageViewEventRegistrationCoordinator : Page
     {
         private CoordinatorWindow _coordinatorWindow;
-        public PageRegistrationCoordinator(CoordinatorWindow coordinatorWindow)
+        public PageViewEventRegistrationCoordinator(CoordinatorWindow coordinatorWindow)
         {
             InitializeComponent();
             _coordinatorWindow = coordinatorWindow;
-        }
-
-        private void SeeRegOnEvent_Click(object sender, RoutedEventArgs e)
-        {
-            _coordinatorWindow.mainFrame.Navigate(new PageViewEventRegistrationCoordinator(_coordinatorWindow));
         }
     }
 }

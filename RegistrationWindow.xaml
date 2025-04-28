@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StudentCouncilActivity"
         mc:Ignorable="d"
         Title="Регистрация" Height="650" Width="1000">
-    <Grid Margin="0,-4,0,4">
+    <Grid>
         <Label Content="Регистрация" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="FuturaMediumC" FontSize="54" Foreground="#1F1F1F" Margin="0,14,0,0"/>
         <TextBox x:Name="FIO" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="400" Height="40" VerticalAlignment="Top" Margin="40,133,0,0"/>
         <Button Content="Зарегистрироваться" Style="{DynamicResource MainButton}" FontSize="38" HorizontalAlignment="Center" Width="390" Height="60" VerticalAlignment="Top" Margin="0,491,0,0" BorderThickness="0,1,1,1" RenderTransformOrigin="20,20" Click="ButtonReg"/>

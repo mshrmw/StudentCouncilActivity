@@ -1,0 +1,900 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище studModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="IDEvent" />
+          </Key>
+          <Property Name="IDEvent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="Descriptions" Type="text" />
+          <Property Name="IDOrganizer" Type="int" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EventTasks">
+          <Key>
+            <PropertyRef Name="IDTask" />
+          </Key>
+          <Property Name="IDTask" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDEvent" Type="int" Nullable="false" />
+          <Property Name="IDSector" Type="int" Nullable="false" />
+          <Property Name="TaskName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TasksDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="Deadline" Type="date" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Positions">
+          <Key>
+            <PropertyRef Name="IDPosition" />
+          </Key>
+          <Property Name="IDPosition" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Responsibilities" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Registrations">
+          <Key>
+            <PropertyRef Name="IDRegistration" />
+          </Key>
+          <Property Name="IDRegistration" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDStudent" Type="int" Nullable="false" />
+          <Property Name="IDTask" Type="int" Nullable="false" />
+          <Property Name="RegistrationDate" Type="date" Nullable="false" />
+          <Property Name="RegistrationStatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sectors">
+          <Key>
+            <PropertyRef Name="IDSector" />
+          </Key>
+          <Property Name="IDSector" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SectorName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descriptions" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="StudentEventParticipation">
+          <Key>
+            <PropertyRef Name="IDStudentEventParticipation" />
+          </Key>
+          <Property Name="IDStudentEventParticipation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDStudent" Type="int" Nullable="false" />
+          <Property Name="IDEvent" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentPositions">
+          <Key>
+            <PropertyRef Name="IDStudentPositions" />
+          </Key>
+          <Property Name="IDStudentPositions" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDStudent" Type="int" Nullable="false" />
+          <Property Name="IDPosition" Type="int" Nullable="false" />
+          <Property Name="IDSector" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="IDStudent" />
+          </Key>
+          <Property Name="IDStudent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="StudentCardNumber" Type="int" Nullable="false" />
+          <Property Name="Course" Type="int" Nullable="false" />
+          <Property Name="Groupp" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="JoinDate" Type="date" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentSectors">
+          <Key>
+            <PropertyRef Name="IDStudentSectors" />
+          </Key>
+          <Property Name="IDStudentSectors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDStudent" Type="int" Nullable="false" />
+          <Property Name="IDSector" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDStudent" Type="int" />
+        </EntityType>
+        <Association Name="FK__Events__IDOrgani__5EBF139D">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="IDOrganizer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EventTask__IDEve__656C112C">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="EventTasks" Type="Self.EventTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IDEvent" />
+            </Principal>
+            <Dependent Role="EventTasks">
+              <PropertyRef Name="IDEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EventTask__IDSec__66603565">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="1" />
+          <End Role="EventTasks" Type="Self.EventTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="IDSector" />
+            </Principal>
+            <Dependent Role="EventTasks">
+              <PropertyRef Name="IDSector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__IDStu__693CA210">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__IDTas__6A30C649">
+          <End Role="EventTasks" Type="Self.EventTasks" Multiplicity="1" />
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventTasks">
+              <PropertyRef Name="IDTask" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="IDTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEv__IDEve__628FA481">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="StudentEventParticipation" Type="Self.StudentEventParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IDEvent" />
+            </Principal>
+            <Dependent Role="StudentEventParticipation">
+              <PropertyRef Name="IDEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEv__IDStu__619B8048">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentEventParticipation" Type="Self.StudentEventParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="StudentEventParticipation">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentPo__IDPos__571DF1D5">
+          <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+          <End Role="StudentPositions" Type="Self.StudentPositions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="IDPosition" />
+            </Principal>
+            <Dependent Role="StudentPositions">
+              <PropertyRef Name="IDPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentPo__IDSec__5812160E">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="1" />
+          <End Role="StudentPositions" Type="Self.StudentPositions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="IDSector" />
+            </Principal>
+            <Dependent Role="StudentPositions">
+              <PropertyRef Name="IDSector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentPo__IDStu__5629CD9C">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentPositions" Type="Self.StudentPositions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="StudentPositions">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSe__IDSec__5BE2A6F2">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="1" />
+          <End Role="StudentSectors" Type="Self.StudentSectors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="IDSector" />
+            </Principal>
+            <Dependent Role="StudentSectors">
+              <PropertyRef Name="IDSector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSe__IDStu__5AEE82B9">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentSectors" Type="Self.StudentSectors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="StudentSectors">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IDStudent__4F7CD00D">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище studModelContainer">
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventTasks" EntityType="Self.EventTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registrations" EntityType="Self.Registrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sectors" EntityType="Self.Sectors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentEventParticipation" EntityType="Self.StudentEventParticipation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentPositions" EntityType="Self.StudentPositions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentSectors" EntityType="Self.StudentSectors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Events__IDOrgani__5EBF139D" Association="Self.FK__Events__IDOrgani__5EBF139D">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EventTask__IDEve__656C112C" Association="Self.FK__EventTask__IDEve__656C112C">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="EventTasks" EntitySet="EventTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EventTask__IDSec__66603565" Association="Self.FK__EventTask__IDSec__66603565">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="EventTasks" EntitySet="EventTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__IDStu__693CA210" Association="Self.FK__Registrat__IDStu__693CA210">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__IDTas__6A30C649" Association="Self.FK__Registrat__IDTas__6A30C649">
+            <End Role="EventTasks" EntitySet="EventTasks" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEv__IDEve__628FA481" Association="Self.FK__StudentEv__IDEve__628FA481">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="StudentEventParticipation" EntitySet="StudentEventParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEv__IDStu__619B8048" Association="Self.FK__StudentEv__IDStu__619B8048">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentEventParticipation" EntitySet="StudentEventParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentPo__IDPos__571DF1D5" Association="Self.FK__StudentPo__IDPos__571DF1D5">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="StudentPositions" EntitySet="StudentPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentPo__IDSec__5812160E" Association="Self.FK__StudentPo__IDSec__5812160E">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="StudentPositions" EntitySet="StudentPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentPo__IDStu__5629CD9C" Association="Self.FK__StudentPo__IDStu__5629CD9C">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentPositions" EntitySet="StudentPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSe__IDSec__5BE2A6F2" Association="Self.FK__StudentSe__IDSec__5BE2A6F2">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="StudentSectors" EntitySet="StudentSectors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSe__IDStu__5AEE82B9" Association="Self.FK__StudentSe__IDStu__5AEE82B9">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentSectors" EntitySet="StudentSectors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IDStudent__4F7CD00D" Association="Self.FK__Users__IDStudent__4F7CD00D">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Users" Association="Self.FK_Students_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="studModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="IDEvent" />
+          </Key>
+          <Property Name="IDEvent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="Descriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDOrganizer" Type="Int32" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Events__IDOrgani__5EBF139D" FromRole="Events" ToRole="Students" />
+          <NavigationProperty Name="EventTasks" Relationship="Self.FK__EventTask__IDEve__656C112C" FromRole="Events" ToRole="EventTasks" />
+          <NavigationProperty Name="StudentEventParticipation" Relationship="Self.FK__StudentEv__IDEve__628FA481" FromRole="Events" ToRole="StudentEventParticipation" />
+        </EntityType>
+        <EntityType Name="EventTasks">
+          <Key>
+            <PropertyRef Name="IDTask" />
+          </Key>
+          <Property Name="IDTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDEvent" Type="Int32" Nullable="false" />
+          <Property Name="IDSector" Type="Int32" Nullable="false" />
+          <Property Name="TaskName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TasksDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__EventTask__IDEve__656C112C" FromRole="EventTasks" ToRole="Events" />
+          <NavigationProperty Name="Sectors" Relationship="Self.FK__EventTask__IDSec__66603565" FromRole="EventTasks" ToRole="Sectors" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__IDTas__6A30C649" FromRole="EventTasks" ToRole="Registrations" />
+        </EntityType>
+        <EntityType Name="Positions">
+          <Key>
+            <PropertyRef Name="IDPosition" />
+          </Key>
+          <Property Name="IDPosition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Responsibilities" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentPositions" Relationship="Self.FK__StudentPo__IDPos__571DF1D5" FromRole="Positions" ToRole="StudentPositions" />
+        </EntityType>
+        <EntityType Name="Registrations">
+          <Key>
+            <PropertyRef Name="IDRegistration" />
+          </Key>
+          <Property Name="IDRegistration" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDStudent" Type="Int32" Nullable="false" />
+          <Property Name="IDTask" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RegistrationStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EventTasks" Relationship="Self.FK__Registrat__IDTas__6A30C649" FromRole="Registrations" ToRole="EventTasks" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Registrat__IDStu__693CA210" FromRole="Registrations" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Sectors">
+          <Key>
+            <PropertyRef Name="IDSector" />
+          </Key>
+          <Property Name="IDSector" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SectorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descriptions" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EventTasks" Relationship="Self.FK__EventTask__IDSec__66603565" FromRole="Sectors" ToRole="EventTasks" />
+          <NavigationProperty Name="StudentPositions" Relationship="Self.FK__StudentPo__IDSec__5812160E" FromRole="Sectors" ToRole="StudentPositions" />
+          <NavigationProperty Name="StudentSectors" Relationship="Self.FK__StudentSe__IDSec__5BE2A6F2" FromRole="Sectors" ToRole="StudentSectors" />
+        </EntityType>
+        <EntityType Name="StudentEventParticipation">
+          <Key>
+            <PropertyRef Name="IDStudentEventParticipation" />
+          </Key>
+          <Property Name="IDStudentEventParticipation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDStudent" Type="Int32" Nullable="false" />
+          <Property Name="IDEvent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__StudentEv__IDEve__628FA481" FromRole="StudentEventParticipation" ToRole="Events" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__StudentEv__IDStu__619B8048" FromRole="StudentEventParticipation" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="StudentPositions">
+          <Key>
+            <PropertyRef Name="IDStudentPositions" />
+          </Key>
+          <Property Name="IDStudentPositions" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDStudent" Type="Int32" Nullable="false" />
+          <Property Name="IDPosition" Type="Int32" Nullable="false" />
+          <Property Name="IDSector" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Positions" Relationship="Self.FK__StudentPo__IDPos__571DF1D5" FromRole="StudentPositions" ToRole="Positions" />
+          <NavigationProperty Name="Sectors" Relationship="Self.FK__StudentPo__IDSec__5812160E" FromRole="StudentPositions" ToRole="Sectors" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__StudentPo__IDStu__5629CD9C" FromRole="StudentPositions" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="IDStudent" />
+          </Key>
+          <Property Name="IDStudent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StudentCardNumber" Type="Int32" Nullable="false" />
+          <Property Name="Course" Type="Int32" Nullable="false" />
+          <Property Name="Groupp" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__Events__IDOrgani__5EBF139D" FromRole="Students" ToRole="Events" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__IDStu__693CA210" FromRole="Students" ToRole="Registrations" />
+          <NavigationProperty Name="StudentEventParticipation" Relationship="Self.FK__StudentEv__IDStu__619B8048" FromRole="Students" ToRole="StudentEventParticipation" />
+          <NavigationProperty Name="StudentPositions" Relationship="Self.FK__StudentPo__IDStu__5629CD9C" FromRole="Students" ToRole="StudentPositions" />
+          <NavigationProperty Name="StudentSectors" Relationship="Self.FK__StudentSe__IDStu__5AEE82B9" FromRole="Students" ToRole="StudentSectors" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__IDStudent__4F7CD00D" FromRole="Students" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_Students_Users" FromRole="Students" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="StudentSectors">
+          <Key>
+            <PropertyRef Name="IDStudentSectors" />
+          </Key>
+          <Property Name="IDStudentSectors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDStudent" Type="Int32" Nullable="false" />
+          <Property Name="IDSector" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sectors" Relationship="Self.FK__StudentSe__IDSec__5BE2A6F2" FromRole="StudentSectors" ToRole="Sectors" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__StudentSe__IDStu__5AEE82B9" FromRole="StudentSectors" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDStudent" Type="Int32" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Users__IDStudent__4F7CD00D" FromRole="Users" ToRole="Students" />
+          <NavigationProperty Name="Students1" Relationship="Self.FK_Students_Users" FromRole="Users" ToRole="Students" />
+        </EntityType>
+        <Association Name="FK__Events__IDOrgani__5EBF139D">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="IDOrganizer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EventTask__IDEve__656C112C">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="EventTasks" Type="Self.EventTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IDEvent" />
+            </Principal>
+            <Dependent Role="EventTasks">
+              <PropertyRef Name="IDEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEv__IDEve__628FA481">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="StudentEventParticipation" Type="Self.StudentEventParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="IDEvent" />
+            </Principal>
+            <Dependent Role="StudentEventParticipation">
+              <PropertyRef Name="IDEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EventTask__IDSec__66603565">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="1" />
+          <End Role="EventTasks" Type="Self.EventTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="IDSector" />
+            </Principal>
+            <Dependent Role="EventTasks">
+              <PropertyRef Name="IDSector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__IDTas__6A30C649">
+          <End Role="EventTasks" Type="Self.EventTasks" Multiplicity="1" />
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventTasks">
+              <PropertyRef Name="IDTask" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="IDTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentPo__IDPos__571DF1D5">
+          <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+          <End Role="StudentPositions" Type="Self.StudentPositions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="IDPosition" />
+            </Principal>
+            <Dependent Role="StudentPositions">
+              <PropertyRef Name="IDPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__IDStu__693CA210">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentPo__IDSec__5812160E">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="1" />
+          <End Role="StudentPositions" Type="Self.StudentPositions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="IDSector" />
+            </Principal>
+            <Dependent Role="StudentPositions">
+              <PropertyRef Name="IDSector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSe__IDSec__5BE2A6F2">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="1" />
+          <End Role="StudentSectors" Type="Self.StudentSectors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="IDSector" />
+            </Principal>
+            <Dependent Role="StudentSectors">
+              <PropertyRef Name="IDSector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEv__IDStu__619B8048">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentEventParticipation" Type="Self.StudentEventParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="StudentEventParticipation">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentPo__IDStu__5629CD9C">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentPositions" Type="Self.StudentPositions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="StudentPositions">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSe__IDStu__5AEE82B9">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentSectors" Type="Self.StudentSectors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="StudentSectors">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__IDStudent__4F7CD00D">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IDStudent" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IDStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="studDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Events" EntityType="Self.Events" />
+          <EntitySet Name="EventTasks" EntityType="Self.EventTasks" />
+          <EntitySet Name="Positions" EntityType="Self.Positions" />
+          <EntitySet Name="Registrations" EntityType="Self.Registrations" />
+          <EntitySet Name="Sectors" EntityType="Self.Sectors" />
+          <EntitySet Name="StudentEventParticipation" EntityType="Self.StudentEventParticipation" />
+          <EntitySet Name="StudentPositions" EntityType="Self.StudentPositions" />
+          <EntitySet Name="Students" EntityType="Self.Students" />
+          <EntitySet Name="StudentSectors" EntityType="Self.StudentSectors" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK__Events__IDOrgani__5EBF139D" Association="Self.FK__Events__IDOrgani__5EBF139D">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EventTask__IDEve__656C112C" Association="Self.FK__EventTask__IDEve__656C112C">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="EventTasks" EntitySet="EventTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEv__IDEve__628FA481" Association="Self.FK__StudentEv__IDEve__628FA481">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="StudentEventParticipation" EntitySet="StudentEventParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EventTask__IDSec__66603565" Association="Self.FK__EventTask__IDSec__66603565">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="EventTasks" EntitySet="EventTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__IDTas__6A30C649" Association="Self.FK__Registrat__IDTas__6A30C649">
+            <End Role="EventTasks" EntitySet="EventTasks" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentPo__IDPos__571DF1D5" Association="Self.FK__StudentPo__IDPos__571DF1D5">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="StudentPositions" EntitySet="StudentPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__IDStu__693CA210" Association="Self.FK__Registrat__IDStu__693CA210">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentPo__IDSec__5812160E" Association="Self.FK__StudentPo__IDSec__5812160E">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="StudentPositions" EntitySet="StudentPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSe__IDSec__5BE2A6F2" Association="Self.FK__StudentSe__IDSec__5BE2A6F2">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="StudentSectors" EntitySet="StudentSectors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEv__IDStu__619B8048" Association="Self.FK__StudentEv__IDStu__619B8048">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentEventParticipation" EntitySet="StudentEventParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentPo__IDStu__5629CD9C" Association="Self.FK__StudentPo__IDStu__5629CD9C">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentPositions" EntitySet="StudentPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSe__IDStu__5AEE82B9" Association="Self.FK__StudentSe__IDStu__5AEE82B9">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentSectors" EntitySet="StudentSectors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__IDStudent__4F7CD00D" Association="Self.FK__Users__IDStudent__4F7CD00D">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Users" Association="Self.FK_Students_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище studModelContainer" CdmEntityContainer="studDB">
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="studModel.Events">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="IDEvent" ColumnName="IDEvent" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="IDOrganizer" ColumnName="IDOrganizer" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTasks">
+            <EntityTypeMapping TypeName="studModel.EventTasks">
+              <MappingFragment StoreEntitySet="EventTasks">
+                <ScalarProperty Name="IDTask" ColumnName="IDTask" />
+                <ScalarProperty Name="IDEvent" ColumnName="IDEvent" />
+                <ScalarProperty Name="IDSector" ColumnName="IDSector" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="TasksDescription" ColumnName="TasksDescription" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="studModel.Positions">
+              <MappingFragment StoreEntitySet="Positions">
+                <ScalarProperty Name="IDPosition" ColumnName="IDPosition" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Responsibilities" ColumnName="Responsibilities" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="studModel.Registrations">
+              <MappingFragment StoreEntitySet="Registrations">
+                <ScalarProperty Name="IDRegistration" ColumnName="IDRegistration" />
+                <ScalarProperty Name="IDStudent" ColumnName="IDStudent" />
+                <ScalarProperty Name="IDTask" ColumnName="IDTask" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="RegistrationStatus" ColumnName="RegistrationStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sectors">
+            <EntityTypeMapping TypeName="studModel.Sectors">
+              <MappingFragment StoreEntitySet="Sectors">
+                <ScalarProperty Name="IDSector" ColumnName="IDSector" />
+                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEventParticipation">
+            <EntityTypeMapping TypeName="studModel.StudentEventParticipation">
+              <MappingFragment StoreEntitySet="StudentEventParticipation">
+                <ScalarProperty Name="IDStudentEventParticipation" ColumnName="IDStudentEventParticipation" />
+                <ScalarProperty Name="IDStudent" ColumnName="IDStudent" />
+                <ScalarProperty Name="IDEvent" ColumnName="IDEvent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentPositions">
+            <EntityTypeMapping TypeName="studModel.StudentPositions">
+              <MappingFragment StoreEntitySet="StudentPositions">
+                <ScalarProperty Name="IDStudentPositions" ColumnName="IDStudentPositions" />
+                <ScalarProperty Name="IDStudent" ColumnName="IDStudent" />
+                <ScalarProperty Name="IDPosition" ColumnName="IDPosition" />
+                <ScalarProperty Name="IDSector" ColumnName="IDSector" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="studModel.Students">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="IDStudent" ColumnName="IDStudent" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="StudentCardNumber" ColumnName="StudentCardNumber" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="Groupp" ColumnName="Groupp" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentSectors">
+            <EntityTypeMapping TypeName="studModel.StudentSectors">
+              <MappingFragment StoreEntitySet="StudentSectors">
+                <ScalarProperty Name="IDStudentSectors" ColumnName="IDStudentSectors" />
+                <ScalarProperty Name="IDStudent" ColumnName="IDStudent" />
+                <ScalarProperty Name="IDSector" ColumnName="IDSector" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="studModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="studModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="IDStudent" ColumnName="IDStudent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

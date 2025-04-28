@@ -8,13 +8,16 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Задания">
 
-    <Grid Background="White" Cursor="">
-        <Label Content="Задания, которые Вы выполнили" FontFamily="FuturaBookC" FontSize="22" HorizontalAlignment="Left" Margin="25,15,0,0" VerticalAlignment="Top"/>
-        <Label Content="Невыполненные задания" FontFamily="FuturaBookC" FontSize="22" HorizontalAlignment="Right" Margin="0,15,153,0" VerticalAlignment="Top"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="350" Height="300" HorizontalAlignment="Left" Margin="30,51,0,99"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="350" Height="300" HorizontalAlignment="Right" Margin="0,51,30,99"/>
-        <Button x:Name="ExecuteTask" Content="Выполнить" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,80,42" VerticalAlignment="Bottom" Height="40" Width="250"/>
-        <Button x:Name="CreateTask" Content="Создать задание" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Left" Margin="80,0,0,42" VerticalAlignment="Bottom" Height="40" Width="250"/>
+    <Grid Background="White">
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="400" HorizontalAlignment="Left" Margin="30,30,0,30"/>
+        <Button x:Name="ExecuteTask" Content="Выполнить" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,124" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <Button x:Name="DeleteTask" Content="Удалить" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,174" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <ComboBox HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="35" Width="250">
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Выполненные задания</TextBlock>
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Невыполненные задания</TextBlock>
+        </ComboBox>
+        <Button x:Name="FilterTasks" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,80,30,0" VerticalAlignment="Top" Height="40" Width="250"/>
+        <Button x:Name="CreateTask" Content="Создать задание" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="CreateTask_Click"/>
 
     </Grid>
 </Page>

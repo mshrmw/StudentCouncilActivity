@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,8 +67,38 @@
     <Compile Include="CoordinatorWindow.xaml.cs">
       <DependentUpon>CoordinatorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Events.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventTasks.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PageCreateEventsCoordinator.xaml.cs">
+      <DependentUpon>PageCreateEventsCoordinator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageCreateEventsPredsed.xaml.cs">
+      <DependentUpon>PageCreateEventsPredsed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageCreateSectorsPredsed.xaml.cs">
+      <DependentUpon>PageCreateSectorsPredsed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageCreateTasksCoordinator.xaml.cs">
+      <DependentUpon>PageCreateTasksCoordinator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageCreateTasksPredsed.xaml.cs">
+      <DependentUpon>PageCreateTasksPredsed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageEditEventsCoordinator.xaml.cs">
+      <DependentUpon>PageEditEventsCoordinator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageEditEventsPredsed.xaml.cs">
+      <DependentUpon>PageEditEventsPredsed.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageEventsCoordinator.xaml.cs">
       <DependentUpon>PageEventsCoordinator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageEventsPredsed.xaml.cs">
+      <DependentUpon>PageEventsPredsed.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageEventsStudents.xaml.cs">
       <DependentUpon>PageEventsStudents.xaml</DependentUpon>
@@ -70,11 +109,20 @@
     <Compile Include="PageRegistrationCoordinator.xaml.cs">
       <DependentUpon>PageRegistrationCoordinator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageRegistrationPredsed.xaml.cs">
+      <DependentUpon>PageRegistrationPredsed.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageRegistrationStudent.xaml.cs">
       <DependentUpon>PageRegistrationStudent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageRole.xaml.cs">
+      <DependentUpon>PageRole.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageSectorCoordinator.xaml.cs">
       <DependentUpon>PageSectorCoordinator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageSectorPredsed.xaml.cs">
+      <DependentUpon>PageSectorPredsed.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageSectorsStudent.xaml.cs">
       <DependentUpon>PageSectorsStudent.xaml</DependentUpon>
@@ -82,17 +130,71 @@
     <Compile Include="PageTasksCoordinator.xaml.cs">
       <DependentUpon>PageTasksCoordinator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageTasksPredsed.xaml.cs">
+      <DependentUpon>PageTasksPredsed.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageTasksStudent.xaml.cs">
       <DependentUpon>PageTasksStudent.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageTops.xaml.cs">
       <DependentUpon>PageTops.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageViewEventRegistrationCoordinator.xaml.cs">
+      <DependentUpon>PageViewEventRegistrationCoordinator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageViewEventRegistrationPredsed.xaml.cs">
+      <DependentUpon>PageViewEventRegistrationPredsed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Positions.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PredsedWindow.xaml.cs">
+      <DependentUpon>PredsedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Registrations.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sectors.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentEventParticipation.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentPositions.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Students.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentSectors.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="StudentsWindow.xaml.cs">
       <DependentUpon>StudentsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>StudDatabase.tt</DependentUpon>
     </Compile>
     <Page Include="CoordinatorWindow.xaml">
       <SubType>Designer</SubType>
@@ -114,7 +216,39 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PageCreateEventsCoordinator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageCreateEventsPredsed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageCreateSectorsPredsed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageCreateTasksCoordinator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageCreateTasksPredsed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageEditEventsCoordinator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageEditEventsPredsed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageEventsCoordinator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageEventsPredsed.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,11 +264,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageRegistrationPredsed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageRegistrationStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageRole.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageSectorCoordinator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageSectorPredsed.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,11 +292,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageTasksPredsed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageTasksStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageTops.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageViewEventRegistrationCoordinator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageViewEventRegistrationPredsed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PredsedWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,9 +343,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="StudDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StudDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="StudDatabase.edmx.diagram">
+      <DependentUpon>StudDatabase.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +361,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="1e347431b3475c5c438d01fc52ec0788.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="StudDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StudDatabase.Context.cs</LastGenOutput>
+      <DependentUpon>StudDatabase.edmx</DependentUpon>
+    </Content>
+    <Content Include="StudDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StudDatabase.edmx</DependentUpon>
+      <LastGenOutput>StudDatabase.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

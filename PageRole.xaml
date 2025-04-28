@@ -1,0 +1,19 @@
+﻿<Page x:Class="StudentCouncilActivity.PageRole"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StudentCouncilActivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="Должности">
+
+    <Grid Background="White">
+        <Button x:Name="NewCoordinatorButton" Content="Назначить нового координатора" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,270,110,0" VerticalAlignment="Top" Height="40" Width="350"/>
+        <Button x:Name="NewPredsedButton" Content="Назначить нового председателя" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Left" Margin="110,270,0,0" VerticalAlignment="Top" Height="40" Width="350"/>
+        <ComboBox x:Name="NewPredsedComboBox" HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Center" Height="35" Width="350"/>
+        <ComboBox x:Name="SectorComboBox" HorizontalAlignment="Right" Margin="0,0,110,100" VerticalAlignment="Center" Height="35" Width="350"/>
+        <ComboBox x:Name="NewCoordinatorComboBox" HorizontalAlignment="Right" Margin="0,0,110,0" VerticalAlignment="Center" Height="35" Width="350"/>
+
+    </Grid>
+</Page>

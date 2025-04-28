@@ -1,0 +1,35 @@
+﻿<Page x:Class="StudentCouncilActivity.PageCreateTasksCoordinator"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StudentCouncilActivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="515" d:DesignWidth="1000"
+      Title="Регистрация задания">
+
+    <Grid Background="White">
+        <Label Content="Регистрация задания" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="FuturaMediumC" FontSize="30" Foreground="#1F1F1F" Margin="0,24,0,0"/>
+        <Label Content="Название мероприятия" HorizontalAlignment="Left" Margin="26,105,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="233,102,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <Label Content="Название задания" HorizontalAlignment="Left" Margin="26,191,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="192,190,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <Label Content="Дедлайн" HorizontalAlignment="Left" Margin="26,281,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <TextBox x:Name="Description" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Right" Width="444" Height="40" VerticalAlignment="Top" Margin="0,229,30,0"/>
+        <Label Content="Описание" HorizontalAlignment="Right" Margin="0,195,375,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="Баллы за задание" HorizontalAlignment="Right" Margin="0,282,306,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <TextBox x:Name="PointsOfTask" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Right" Width="444" Height="40" VerticalAlignment="Top" Margin="0,318,30,0"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="688,280,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <DatePicker x:Name="EndDate" HorizontalAlignment="Left" Margin="30,318,0,0" VerticalAlignment="Top" Width="444" Height="40" FontSize="22" FontFamily="FuturaBookC"/>
+        <ComboBox x:Name="NameEventComboBox" HorizontalAlignment="Left" Margin="30,137,0,0" VerticalAlignment="Top" Width="444" Height="40" FontSize="22" FontFamily="FuturaBookC"/>
+        <Label Content="Название сектора" HorizontalAlignment="Right" Margin="0,105,300,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="688,102,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+        <ComboBox x:Name="NameSectorComboBox" HorizontalAlignment="Right" Margin="0,137,30,0" VerticalAlignment="Top" Width="444" Height="40" FontSize="22" FontFamily="FuturaBookC" Cursor=""/>
+        <TextBox x:Name="NameTask" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="444" Height="40" VerticalAlignment="Top" Margin="30,229,0,0"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="113,280,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
+
+        <Button x:Name="SaveCreateEvent" Content="Сохранить" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="444" Click="SaveCreateEvent_Click"/>
+        <Button x:Name="Cancel" Content="Отменить" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,30" VerticalAlignment="Bottom" Height="40" Width="444" Click="Cancel_Click"/>
+
+    </Grid>
+</Page>

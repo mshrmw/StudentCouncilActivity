@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3074527f413c4a43a09e15b40cfeae64" Name="Diagram1">
+        <EntityTypeShape EntityType="studModel.Events" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.EventTasks" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.Positions" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.Registrations" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.Sectors" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.StudentEventParticipation" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.StudentPositions" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.Students" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.StudentSectors" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="studModel.Users" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <AssociationConnector Association="studModel.FK__Events__IDOrgani__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__EventTask__IDEve__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__StudentEv__IDEve__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__EventTask__IDSec__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__Registrat__IDTas__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__StudentPo__IDPos__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__Registrat__IDStu__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__StudentPo__IDSec__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__StudentSe__IDSec__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__StudentEv__IDStu__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__StudentPo__IDStu__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__StudentSe__IDStu__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK__Users__IDStudent__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="studModel.FK_Students_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
