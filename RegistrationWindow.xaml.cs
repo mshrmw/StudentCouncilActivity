@@ -209,7 +209,7 @@ namespace StudentCouncilActivity
             }
             try
             {
-                using (var db = new studDB())
+                using (var db = studDB.GetContext())
                 {
                     var student = new Students
                     {

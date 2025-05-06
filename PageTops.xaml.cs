@@ -20,9 +20,23 @@ namespace StudentCouncilActivity
     /// </summary>
     public partial class PageTops : Page
     {
+        private studDB _context = studDB.GetContext();
         public PageTops()
         {
             InitializeComponent();
+            LoadStudentRatings();
+        }
+        private void LoadStudentRatings()
+        {
+            try
+            {
+                var query = _context.Students.OrderByDescending(s => s.Points).Select(s => new { s.LastName, s.FirstName, s.MiddleName, s.Points, s.Course, s.Groupp });
+                DataGridTops.ItemsSource = query.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки рейтинга: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

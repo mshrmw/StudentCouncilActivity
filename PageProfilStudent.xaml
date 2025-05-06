@@ -3,14 +3,32 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:system="clr-namespace:System;assembly=mscorlib" 
       xmlns:local="clr-namespace:StudentCouncilActivity"
       mc:Ignorable="d" 
       d:DesignHeight="515" d:DesignWidth="1000"
       Title="Профиль">
 
     <Grid Background="White">
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Height="500" Width="750" Margin="40,8,210,7"/>
-        <Button x:Name="edit" Content="Изменить" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,40,90" VerticalAlignment="Bottom" Height="40" Width="150"/>
-        <Button x:Name="save" Content="Сохранить" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,40,40" VerticalAlignment="Bottom" Height="40" Width="150"/>
+        <TextBox x:Name="LastName" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="400" Height="40" VerticalAlignment="Top" Margin="40,55,0,0"  />
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="34,20,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="Дата рождения" HorizontalAlignment="Right" Margin="0,20,296,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <TextBox x:Name="StudentsCardNumber" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Right" Width="400" Height="40" VerticalAlignment="Top" Margin="0,219,40,0"  />
+        <DatePicker x:Name="DateOfBirth" DisplayDateEnd="{x:Static system:DateTime.Today}" HorizontalAlignment="Right" Margin="0,55,40,0" VerticalAlignment="Top" Width="400" Height="40" FontSize="22" FontFamily="FuturaBookC" />
+        <Label Content="Номер студенческого билета" HorizontalAlignment="Right" Margin="0,187,173,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="Курс" HorizontalAlignment="Left" Margin="34,274,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <TextBox x:Name="Course" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="100" Height="40" VerticalAlignment="Top" Margin="40,307,0,0"  />
+        <Label Content="Номер группы" HorizontalAlignment="Left" Margin="174,274,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <TextBox x:Name="Group" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="260" Height="40" VerticalAlignment="Top" Margin="180,307,0,0"  />
+        <TextBox x:Name="Email" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Right" Width="400" Height="40" VerticalAlignment="Top" Margin="0,139,40,0"  />
+        <Label Content="Email" HorizontalAlignment="Right" Margin="0,105,389,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Label Content="Баллы" HorizontalAlignment="Right" Margin="0,270,378,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <TextBox x:Name="Points" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Right" Width="400" Height="40" VerticalAlignment="Top" Margin="0,307,40,0" IsReadOnly="True"/>
+        <TextBox x:Name="FirstName" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="400" Height="40" VerticalAlignment="Top" Margin="40,140,0,0"  />
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="34,105,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <TextBox x:Name="MiddleName" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="400" Height="40" VerticalAlignment="Top" Margin="40,222,0,0"  />
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="34,187,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
+        <Button x:Name="save" Content="Сохранить" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,40,40" VerticalAlignment="Bottom" Height="40" Width="150" Click="save_Click"/>
+
     </Grid>
 </Page>

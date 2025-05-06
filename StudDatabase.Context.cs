@@ -19,20 +19,20 @@ namespace StudentCouncilActivity
             : base("name=studDB")
         {
         }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
         private static studDB _context;
         public static studDB GetContext()
         {
-            if(_context == null)
+            if (_context == null)
             {
                 _context = new studDB();
             }
             return _context;
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+       
         public virtual DbSet<Events> Events { get; set; }
         public virtual DbSet<EventTasks> EventTasks { get; set; }
         public virtual DbSet<Positions> Positions { get; set; }

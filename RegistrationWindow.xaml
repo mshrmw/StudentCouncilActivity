@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:StudentCouncilActivity"
         mc:Ignorable="d"
         Title="Регистрация" Height="650" Width="1000">
@@ -21,7 +22,7 @@
         <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="34,185,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
         <TextBox x:Name="StudentsCardNumber" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="400" Height="40" VerticalAlignment="Top" Margin="40,307,0,0"/>
         <Label Content="*" HorizontalAlignment="Left" Margin="173,184,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
-        <DatePicker x:Name="DateOfBirth" HorizontalAlignment="Left" Margin="40,222,0,0" VerticalAlignment="Top" Width="400" Height="40" FontSize="22" FontFamily="FuturaBookC"/>
+        <DatePicker x:Name="DateOfBirth" DisplayDateEnd="{x:Static system:DateTime.Today}"  HorizontalAlignment="Left" Margin="40,222,0,0" VerticalAlignment="Top" Width="400" Height="40" FontSize="22" FontFamily="FuturaBookC"/>
         <Label Content="Номер студенческого билета" HorizontalAlignment="Left" Margin="34,275,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
         <Label Content="Курс" HorizontalAlignment="Left" Margin="34,354,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
         <Label Content="*" HorizontalAlignment="Left" Margin="295,273,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>

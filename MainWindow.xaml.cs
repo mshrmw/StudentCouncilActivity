@@ -78,23 +78,27 @@ namespace StudentCouncilActivity
                     MessageBox.Show("Пользователь с такими данными не найден");
                     return false;
                 }
-                if (user.Role == "student")
+                else if (user != null)
                 {
-                    MessageBox.Show("Успешный вход в систему!");
-                    StudentsWindow studentsWindow = new StudentsWindow();
-                    studentsWindow.Show();
-                }
-                else if (user.Role == "coordinator")
-                {
-                    MessageBox.Show("Успешный вход в систему!");
-                    CoordinatorWindow coordinatorWindow = new CoordinatorWindow();
-                    coordinatorWindow.Show();
-                }
-                else if (user.Role == "admin")
-                {
-                    MessageBox.Show("Успешный вход в систему!");
-                    PredsedWindow predsedWindow = new PredsedWindow();
-                    predsedWindow.Show();
+                    App.CurrentStudentId = user.IDStudent ?? 0;
+                    if (user.Role == "student")
+                    {
+                        MessageBox.Show("Успешный вход в систему!");
+                        StudentsWindow studentsWindow = new StudentsWindow();
+                        studentsWindow.Show();
+                    }
+                    else if (user.Role == "coordinator")
+                    {
+                        MessageBox.Show("Успешный вход в систему!");
+                        CoordinatorWindow coordinatorWindow = new CoordinatorWindow();
+                        coordinatorWindow.Show();
+                    }
+                    else if (user.Role == "admin")
+                    {
+                        MessageBox.Show("Успешный вход в систему!");
+                        PredsedWindow predsedWindow = new PredsedWindow();
+                        predsedWindow.Show();
+                    }
                 }
                 this.Close();
                 return true;

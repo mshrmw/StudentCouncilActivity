@@ -13,6 +13,6 @@ namespace StudentCouncilActivity
     /// </summary>
     public partial class App : Application
     {
-        
+        public static int CurrentStudentId { get; set; }
     }
 }
