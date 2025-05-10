@@ -25,23 +25,10 @@ namespace StudentCouncilActivity
         public PageEventsStudents()
         {
             InitializeComponent();
-            LoadEvents();
-            ComboBoxEvents.SelectedIndex = 0;
+            ComboBoxEvents.SelectedIndex = 1;
+            FilterEvents_Click(null, null);
             _currentStudentId = App.CurrentStudentId;
         }
-        private void LoadEvents()
-        {
-            try
-            {
-                var events = _context.Events.OrderBy(e => e.StartDate).ToList();
-                DataGridEvents.ItemsSource = events;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
         private void FilterEvents_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -51,7 +38,7 @@ namespace StudentCouncilActivity
                 switch (ComboBoxEvents.SelectedIndex)
                 {
                     case 0:
-                        LoadEvents();
+                        query = query.OrderBy(e0 => e0.StartDate);
                         break;
                     case 1: 
                         query = query.Where(e1 => e1.StartDate >= currentDate);

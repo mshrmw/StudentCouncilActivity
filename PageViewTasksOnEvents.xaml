@@ -1,4 +1,4 @@
-﻿<Page x:Class="StudentCouncilActivity.PageTasksCoordinator"
+﻿<Page x:Class="StudentCouncilActivity.PageViewTasksOnEvents"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,22 +6,17 @@
       xmlns:local="clr-namespace:StudentCouncilActivity"
       mc:Ignorable="d" 
       d:DesignHeight="515" d:DesignWidth="1000"
-      Title="Задания">
+      Title="Просмотр заданий на мероприятия">
 
     <Grid Background="White">
         <Button x:Name="ExecuteTask" Content="Выполнить" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,124" VerticalAlignment="Bottom" Height="40" Width="250" Click="ExecuteTask_Click"/>
         <Button x:Name="DeleteTask" Content="Удалить" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,174" VerticalAlignment="Bottom" Height="40" Width="250" Click="DeleteTask_Click"/>
-        <ComboBox x:Name="ComboBoxTasks" HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="35" Width="250">
-            <TextBlock FontFamily="FuturaBookC" FontSize="18">Все</TextBlock>
-            <TextBlock FontFamily="FuturaBookC" FontSize="18">В обработке</TextBlock>
-            <TextBlock FontFamily="FuturaBookC" FontSize="18">Принятые</TextBlock>
-            <TextBlock FontFamily="FuturaBookC" FontSize="18">Выполненные</TextBlock>
-        </ComboBox>
+        <ComboBox x:Name="ComboBoxTasks" HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="35" Width="250" FontFamily="FuturaBookC" FontSize="18"/>
         <Button x:Name="FilterTasks" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,80,30,0" VerticalAlignment="Top" Height="40" Width="250" Click="FilterTasks_Click"/>
-        <Button x:Name="ViewTasksOnEvents" Content="Задания на мероприятия" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="ViewTasksOnEvents_Click"/>
+        <Button x:Name="CreateTask" Content="Создать задание" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="ViewTasksOnEvents_Click"/>
         <DataGrid x:Name="DataGridTasks" AutoGenerateColumns="False" IsReadOnly="True" Width="662" HorizontalAlignment="Left" Margin="30,30,0,30">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Статус" Binding="{Binding RegistrationStatus}"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding TaskName}"  />
                 <DataGridTextColumn Header="Описание" Binding="{Binding TasksDescription}"/>
                 <DataGridTextColumn Header="Дедлайн" Binding="{Binding Deadline, StringFormat=dd.MM.yyyy}"/>
@@ -30,6 +25,7 @@
                 <DataGridTextColumn Header="Сектор" Binding="{Binding SectorName}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="ChangeStatus" Content="В процессе / в поиске" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,225" VerticalAlignment="Bottom" Height="40" Width="250" Click="ChangeStatus_Click"/>
 
     </Grid>
 </Page>

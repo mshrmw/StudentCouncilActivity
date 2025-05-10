@@ -9,7 +9,7 @@
       Title="Сектора">
 
     <Grid Background="White">
-        <DataGrid x:Name="DataGridSectors" AutoGenerateColumns="False" IsReadOnly="True" Width="557" HorizontalAlignment="Left" Margin="30,30,0,30">
+        <DataGrid x:Name="DataGridSectors" AutoGenerateColumns="False" IsReadOnly="True" Width="652" HorizontalAlignment="Left" Margin="30,30,0,30">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding SectorName}"  />
                 <DataGridTextColumn Header="Описание" Binding="{Binding Descriptions}"/>

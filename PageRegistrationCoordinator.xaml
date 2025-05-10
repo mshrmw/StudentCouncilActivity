@@ -5,16 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StudentCouncilActivity"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="515" d:DesignWidth="1000"
       Title="Регистрация">
 
     <Grid Background="White">
         <Label Content="Какое задание хотите выполнить?" FontFamily="FuturaBookC" FontSize="22" HorizontalAlignment="Left" Margin="25,15,0,0" VerticalAlignment="Top"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="740" HorizontalAlignment="Center" Margin="0,51,0,113"/>
-        <Button x:Name="FilterTasks" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,22" VerticalAlignment="Bottom" Height="40" Width="250"/>
-        <Button x:Name="RegTask" Content="Зарегистрироваться" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,68" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <DataGrid x:Name="DataGridTasks" AutoGenerateColumns="False" IsReadOnly="True" Width="940" HorizontalAlignment="Center" Margin="0,50,0,115">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding TaskName}"  />
+                <DataGridTextColumn Header="Описание" Binding="{Binding TasksDescription}"/>
+                <DataGridTextColumn Header="Дедлайн" Binding="{Binding Deadline, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Баллы" Binding="{Binding Points}"/>
+                <DataGridTextColumn Header="Мероприятие" Binding="{Binding EventName}"/>
+                <DataGridTextColumn Header="Сектор" Binding="{Binding SectorName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="FilterTasks" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,22" VerticalAlignment="Bottom" Height="40" Width="250" Click="FilterTasks_Click"/>
+        <Button x:Name="RegTask" Content="Зарегистрироваться" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,68" VerticalAlignment="Bottom" Height="40" Width="250" Click="RegTask_Click"/>
         <Button x:Name="SeeRegOnEvent" Content="Просмотр регистраций мероприятия" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,22" VerticalAlignment="Bottom" Height="40" Width="358" Click="SeeRegOnEvent_Click"/>
-        <ComboBox HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom" Height="35" Width="250"/>
-
+        <ComboBox x:Name="ComboBoxTask" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom" Height="35" Width="250" FontFamily="FuturaBookC" FontSize="18"/>
     </Grid>
 </Page>

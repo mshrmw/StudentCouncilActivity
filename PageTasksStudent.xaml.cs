@@ -26,8 +26,8 @@ namespace StudentCouncilActivity
         {
             InitializeComponent();
             _currentStudentId = App.CurrentStudentId;
-            ComboBoxTasks.SelectedIndex = 2;
             LoadTasks("Принят");
+            ComboBoxTasks.SelectedIndex = 2;
         }
         private void LoadTasks(string statusFilter = null)
         {
@@ -55,28 +55,34 @@ namespace StudentCouncilActivity
                 {
                     query = query.Where(t => t.RegistrationStatus == statusFilter);
                 }
-                DataGridTasks.ItemsSource = query.ToList();
+                DataGridTasks.ItemsSource = query.OrderBy(t => t.Deadline).ToList();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка загрузки заданий: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private void FilterTasks_Click(object sender, RoutedEventArgs e)
         {
             string statusFilter = null;
             switch (ComboBoxTasks.SelectedIndex)
             {
-                case 1: // В обработке
+                case 0:
+                    statusFilter = null;
+                    break;
+                case 1:
                     statusFilter = "Зарегистрирован";
                     break;
-                case 2: // Принятые
+                case 2:
                     statusFilter = "Принят";
                     break;
-                case 3: // Выполненные
+                case 3:
                     statusFilter = "Выполнен";
                     break;
-                    // case 0: Все - оставляем statusFilter = null
+                default:
+                    statusFilter = null;
+                    break;
             }
             LoadTasks(statusFilter);
         }
@@ -85,25 +91,33 @@ namespace StudentCouncilActivity
         {
             if (DataGridTasks.SelectedItem == null)
             {
-                MessageBox.Show("Выберите задание для удаления", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Выберите задание для отказа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             try
             {
                 dynamic selectedTask = DataGridTasks.SelectedItem;
                 int registrationId = selectedTask.IDRegistration;
+                int taskId = selectedTask.IDTask;
                 var registration = _context.Registrations.Find(registrationId);
-                if (registration != null)
+                var task = _context.EventTasks.Find(taskId);
+                if (task.Status == "Выполнен" || registration.RegistrationStatus == "Выполнен")
+                {
+                    MessageBox.Show("Нельзя отказаться от выполненного задания", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                var result = MessageBox.Show("Вы уверены, что хотите отказаться от задания?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
                 {
                     _context.Registrations.Remove(registration);
                     _context.SaveChanges();
-                    MessageBox.Show("Задание успешно удалено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                    LoadTasks(ComboBoxTasks.SelectedIndex == 0 ? null : ComboBoxTasks.SelectedIndex == 1 ? "Зарегистрирован" : ComboBoxTasks.SelectedIndex == 2 ? "Принят" : "Выполнен");
+                    MessageBox.Show("Вы отказались от задания", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    FilterTasks_Click(null, null);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при удалении задания: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Ошибка при отказе от задания: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -125,16 +139,19 @@ namespace StudentCouncilActivity
                 int registrationId = selectedTask.IDRegistration;
                 int taskId = selectedTask.IDTask;
                 int points = selectedTask.Points;
+                var task = _context.EventTasks.Find(taskId);
+                if (task.Status != "Выполнен")
+                {
+                    MessageBox.Show("Дождитесь, пока координатор поставит статус задания 'Выполнен'", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
                 var registration = _context.Registrations.Find(registrationId);
-                registration.RegistrationStatus = "Выполнен";
-                var task = _context.EventTasks.FirstOrDefault(t => t.IDTask == taskId);
-                task.Status = "Выполнен";
                 var student = _context.Students.Find(_currentStudentId);
+                registration.RegistrationStatus = "Выполнен";
                 student.Points += points;
                 _context.SaveChanges();
-                MessageBox.Show("Задание успешно выполнено! Баллы добавлены.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                string currentFilter = ComboBoxTasks.SelectedIndex == 0 ? null : ComboBoxTasks.SelectedIndex == 1 ? "Зарегистрирован" : ComboBoxTasks.SelectedIndex == 2 ? "Принят" : "Выполнен";
-                LoadTasks(currentFilter);
+                MessageBox.Show("Задание выполнено! Баллы добавлены", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                FilterTasks_Click(null, null);
             }
             catch (Exception ex)
             {

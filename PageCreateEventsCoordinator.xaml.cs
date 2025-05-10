@@ -21,10 +21,13 @@ namespace StudentCouncilActivity
     public partial class PageCreateEventsCoordinator : Page
     {
         private CoordinatorWindow _coordinatorWindow;
+        private studDB _context = studDB.GetContext();
+        private int _currentStudentId;
         public PageCreateEventsCoordinator(CoordinatorWindow coordinatorWindow)
         {
             InitializeComponent();
             _coordinatorWindow = coordinatorWindow;
+            _currentStudentId = App.CurrentStudentId;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -38,9 +41,51 @@ namespace StudentCouncilActivity
         }
         private void SaveCreateEvent_Click(object sender, RoutedEventArgs e)
         {
-            //код регистрации мероприятия
-
-            _coordinatorWindow.mainFrame.Navigate(new PageCreateTasksCoordinator(_coordinatorWindow));
+            try
+            {
+                if (string.IsNullOrWhiteSpace(NameEvent.Text))
+                {
+                    MessageBox.Show("Название мероприятия не может быть пустым!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if (StartDate.SelectedDate == null)
+                {
+                    MessageBox.Show("Укажите дату начала мероприятия!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(LocationEvent.Text))
+                {
+                    MessageBox.Show("Укажите место проведения мероприятия!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if (EndDate.SelectedDate != null && EndDate.SelectedDate < StartDate.SelectedDate)
+                {
+                    MessageBox.Show("Дата окончания не может быть раньше даты начала!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if (StartDate.SelectedDate < DateTime.Today)
+                {
+                    MessageBox.Show("Дата начала мероприятия должна быть позже сегодняшней даты!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                var newEvent = new Events
+                {
+                    EventName = NameEvent.Text,
+                    StartDate = StartDate.SelectedDate.Value,
+                    EndDate = EndDate.SelectedDate,
+                    Descriptions = Description.Text,
+                    Location = LocationEvent.Text,
+                    IDOrganizer = _currentStudentId 
+                };
+                _context.Events.Add(newEvent);
+                _context.SaveChanges();
+                MessageBox.Show("Мероприятие успешно создано! Теперь вы можете добавить задачи", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                _coordinatorWindow.mainFrame.Navigate(new PageCreateTasksCoordinator(_coordinatorWindow));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при создании мероприятия: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:StudentCouncilActivity"
         mc:Ignorable="d"
+        ResizeMode="CanMinimize"
         Title="Регистрация" Height="650" Width="1000">
     <Grid>
         <Label Content="Регистрация" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="FuturaMediumC" FontSize="54" Foreground="#1F1F1F" Margin="0,14,0,0"/>

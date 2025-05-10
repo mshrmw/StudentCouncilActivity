@@ -5,20 +5,34 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StudentCouncilActivity"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="515" d:DesignWidth="1000"
     Title="Сектор">
 
     <Grid Background="White">
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="399" HorizontalAlignment="Left" Margin="30,30,0,30"/>
-        <Button x:Name="ExitFromSectors" Content="Выйти из сектора" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,80" VerticalAlignment="Bottom" Height="40" Width="250"/>
-        <Button x:Name="JoinFromSectors" Content="Вступить в сектор" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250"/>
-        <ComboBox HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="35" Width="250">
-            <TextBlock FontFamily="FuturaBookC" FontSize="18">Ваш сектор</TextBlock>
-            <TextBlock FontFamily="FuturaBookC" FontSize="18">Сектора, в которых Вы состоите</TextBlock>
+        <DataGrid x:Name="DataGridSectorsMember" AutoGenerateColumns="False" IsReadOnly="True" Width="391" HorizontalAlignment="Left" Margin="30,60,0,80">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"  />
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"  />
+                <DataGridTextColumn Header="Курс" Binding="{Binding Course}"/>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Groupp}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="ExitFromSectors" Content="Выйти из сектора" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,80" VerticalAlignment="Bottom" Height="40" Width="250" Click="ExitFromSectors_Click"/>
+        <Button x:Name="JoinFromSectors" Content="Вступить в сектор" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="JoinFromSectors_Click"/>
+        <ComboBox x:Name="ComboBoxSectors" HorizontalAlignment="Right" Margin="0,0,288,80" VerticalAlignment="Bottom" Height="35" Width="250">
             <TextBlock FontFamily="FuturaBookC" FontSize="18">Все сектора колледжа</TextBlock>
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Сектора, в которых Вы состоите</TextBlock>
         </ComboBox>
-        <Button x:Name="FilterSectors" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,85,30,0" VerticalAlignment="Top" Height="40" Width="250"/>
-        <Button x:Name="DeleteMember" Content="Удалить участника" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,130" VerticalAlignment="Bottom" Height="40" Width="250"/>
+        <Button x:Name="FilterSectors" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,288,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="FilterSectors_Click"/>
+        <Button x:Name="DeleteMember" Content="Удалить участника" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Left" Margin="100,0,0,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="DeleteMember_Click"/>
+        <DataGrid x:Name="DataGridSectors" AutoGenerateColumns="False" IsReadOnly="True" Width="508" HorizontalAlignment="Right" Margin="0,60,30,130">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding SectorName}"  />
+                <DataGridTextColumn Header="Описание" Binding="{Binding Descriptions}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="LabelSectorName" Content="Ваш сектор - " FontFamily="FuturaBookC" FontSize="22" HorizontalAlignment="Left" Margin="25,15,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

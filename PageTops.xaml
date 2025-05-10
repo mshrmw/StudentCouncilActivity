@@ -11,6 +11,7 @@
     <Grid Background="White">
         <DataGrid x:Name="DataGridTops" AutoGenerateColumns="False" IsReadOnly="True" Width="450" Height="450" HorizontalAlignment="Center">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Место" Binding="{Binding Position}"/>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"  />
                 <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"  />

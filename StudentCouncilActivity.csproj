@@ -145,6 +145,9 @@
     <Compile Include="PageViewEventRegistrationPredsed.xaml.cs">
       <DependentUpon>PageViewEventRegistrationPredsed.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageViewTasksOnEvents.xaml.cs">
+      <DependentUpon>PageViewTasksOnEvents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Positions.cs">
       <DependentUpon>StudDatabase.tt</DependentUpon>
     </Compile>
@@ -309,6 +312,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageViewEventRegistrationPredsed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageViewTasksOnEvents.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
