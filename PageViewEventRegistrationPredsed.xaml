@@ -9,12 +9,28 @@
       Title="Просмотр регистраций на мои мероприятия">
 
     <Grid Background="White">
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="585" HorizontalAlignment="Left" Margin="30,30,0,30"/>
-        <Button x:Name="AcceptRegistration" Content="Принять" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250"/>
-        <Button x:Name="DeleteRegistration" Content="Отказать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,80" VerticalAlignment="Bottom" Height="40" Width="250"/>
-        <ComboBox x:Name="EventsBD" HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="35" Width="250"/>
-        <Button x:Name="FilterRegistration" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,140,30,0" VerticalAlignment="Top" Height="40" Width="250"/>
-        <ComboBox x:Name="TasksBD" HorizontalAlignment="Right" Margin="0,77,30,0" VerticalAlignment="Top" Height="35" Width="250"/>
+        <DataGrid x:Name="DataGridTasks" AutoGenerateColumns="False" IsReadOnly="True" Width="649" HorizontalAlignment="Left" Margin="30,30,0,30" Style="{StaticResource DataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Статус" Binding="{Binding RegistrationStatus}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding TaskName}"  />
+                <DataGridTextColumn Header="Дедлайн" Binding="{Binding Deadline, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Мероприятие" Binding="{Binding EventName}"/>
+                <DataGridTextColumn Header="Сектор" Binding="{Binding SectorName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="AcceptRegistration" Content="Принять" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="AcceptRegistration_Click"/>
+        <Button x:Name="DeleteRegistration" Content="Отказать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,80" VerticalAlignment="Bottom" Height="40" Width="250" Click="DeleteRegistration_Click"/>
+        <ComboBox x:Name="ComboBoxEvents" HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="35" Width="250" FontFamily="FuturaBookC" FontSize="18"/>
+        <Button x:Name="FilterRegistration" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,140,30,0" VerticalAlignment="Top" Height="40" Width="250" Click="FilterRegistration_Click"/>
+        <ComboBox x:Name="ComboBoxTasks" HorizontalAlignment="Right" Margin="0,77,30,0" VerticalAlignment="Top" Height="35" Width="250">
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Все</TextBlock>
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">В обработке</TextBlock>
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Приняты</TextBlock>
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Выполненные</TextBlock>
+        </ComboBox>
 
     </Grid>
 </Page>

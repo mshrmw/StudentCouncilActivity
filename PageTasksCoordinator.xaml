@@ -19,7 +19,7 @@
         </ComboBox>
         <Button x:Name="FilterTasks" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,80,30,0" VerticalAlignment="Top" Height="40" Width="250" Click="FilterTasks_Click"/>
         <Button x:Name="ViewTasksOnEvents" Content="Задания на мероприятия" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="ViewTasksOnEvents_Click"/>
-        <DataGrid x:Name="DataGridTasks" AutoGenerateColumns="False" IsReadOnly="True" Width="662" HorizontalAlignment="Left" Margin="30,30,0,30">
+        <DataGrid x:Name="DataGridTasks" AutoGenerateColumns="False" IsReadOnly="True" Width="662" HorizontalAlignment="Left" Margin="30,30,0,30" Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Статус" Binding="{Binding RegistrationStatus}"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding TaskName}"  />

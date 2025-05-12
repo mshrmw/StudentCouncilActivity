@@ -33,7 +33,7 @@ namespace StudentCouncilActivity
         {
             try
             {
-                var sectors = _context.Sectors.ToList();
+                var sectors = _context.Sectors.OrderBy(s => s.SectorName).ToList();
                 DataGridSectors.ItemsSource = sectors;
             }
             catch (Exception ex)
@@ -45,7 +45,7 @@ namespace StudentCouncilActivity
         {
             try
             {
-                var studentSectors = _context.StudentSectors.Where(ss => ss.IDStudent == _currentStudentId).Select(ss => ss.Sectors).ToList();
+                var studentSectors = _context.StudentSectors.Where(ss => ss.IDStudent == _currentStudentId).Select(ss => ss.Sectors).OrderBy(s => s.SectorName).ToList();
                 DataGridSectors.ItemsSource = studentSectors;
             }
             catch (Exception ex)

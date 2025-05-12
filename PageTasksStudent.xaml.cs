@@ -33,24 +33,19 @@ namespace StudentCouncilActivity
         {
             try
             {
-                var query = from reg in _context.Registrations
-                            join task in _context.EventTasks on reg.IDTask equals task.IDTask
-                            join ev in _context.Events on task.IDEvent equals ev.IDEvent
-                            join sec in _context.Sectors on task.IDSector equals sec.IDSector
-                            where reg.IDStudent == _currentStudentId
-                            select new
-                            {
-                                reg.IDRegistration,
-                                reg.RegistrationStatus,
-                                task.TaskName,
-                                task.TasksDescription,
-                                task.Deadline,
-                                task.Points,
-                                EventName = ev.EventName,
-                                SectorName = sec.SectorName,
-                                task.Status,
-                                task.IDTask
-                            };
+                var query = from reg in _context.Registrations join task in _context.EventTasks on reg.IDTask equals task.IDTask join ev in _context.Events on task.IDEvent equals ev.IDEvent join sec in _context.Sectors on task.IDSector equals sec.IDSector where reg.IDStudent == _currentStudentId select new
+                {
+                    reg.IDRegistration,
+                    reg.RegistrationStatus,
+                    task.TaskName,
+                    task.TasksDescription,
+                    task.Deadline,
+                    task.Points,
+                    EventName = ev.EventName,
+                    SectorName = sec.SectorName,
+                    task.Status,
+                    task.IDTask
+                };
                 if (!string.IsNullOrEmpty(statusFilter))
                 {
                     query = query.Where(t => t.RegistrationStatus == statusFilter);

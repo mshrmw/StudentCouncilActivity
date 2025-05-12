@@ -31,24 +31,24 @@ namespace StudentCouncilActivity
             try
             {
                 var students = _context.Students.OrderByDescending(s => s.Points).Select(s => new
-                    {
-                        s.LastName,
-                        s.FirstName,
-                        s.MiddleName,
-                        s.Points,
-                        s.Course,
-                        s.Groupp
-                    }).ToList();
+                {
+                    s.LastName,
+                    s.FirstName,
+                    s.MiddleName,
+                    s.Points,
+                    s.Course,
+                    s.Groupp
+                }).ToList();
                 var rankedStudents = students.Select((s, index) => new
-                    {
-                        Position = index + 1,
-                        s.LastName,
-                        s.FirstName,
-                        s.MiddleName,
-                        s.Points,
-                        s.Course,
-                        s.Groupp
-                    });
+                {
+                    Position = index + 1,
+                    s.LastName,
+                    s.FirstName,
+                    s.MiddleName,
+                    s.Points,
+                    s.Course,
+                    s.Groupp
+                });
                 DataGridTops.ItemsSource = rankedStudents.ToList();
             }
             catch (Exception ex)

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentCouncilActivity"
         mc:Ignorable="d"
+        ResizeMode="CanMinimize"
         Title="Студенческий совет" Height="650" Width="1000">
     <Grid>
         <Grid.RowDefinitions>

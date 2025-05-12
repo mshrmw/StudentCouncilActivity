@@ -4,12 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StudentCouncilActivity"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="515" d:DesignWidth="1000"
       Title="Регистрация мероприятия">
 
     <Grid Background="White">
-
         <Label Content="Регистрация мероприятия" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="FuturaMediumC" FontSize="30" Foreground="#1F1F1F" Margin="0,24,0,0"/>
         <TextBox x:Name="NameEvent" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Left" Width="444" Height="40" VerticalAlignment="Top" Margin="30,139,0,0"/>
         <Label Content="Название" HorizontalAlignment="Left" Margin="26,105,0,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>

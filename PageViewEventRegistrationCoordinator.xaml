@@ -9,7 +9,7 @@
       Title="Просмотр регистраций на мои мероприятия">
 
     <Grid Background="White">
-        <DataGrid x:Name="DataGridTasks" AutoGenerateColumns="False" IsReadOnly="True" Width="649" HorizontalAlignment="Left" Margin="30,30,0,30">
+        <DataGrid x:Name="DataGridTasks" AutoGenerateColumns="False" IsReadOnly="True" Width="649" HorizontalAlignment="Left" Margin="30,30,0,30" Style="{StaticResource DataGridStyle}">
         <DataGrid.Columns>
                 <DataGridTextColumn Header="Статус" Binding="{Binding RegistrationStatus}"/>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>

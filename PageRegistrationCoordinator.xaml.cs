@@ -36,8 +36,8 @@ namespace StudentCouncilActivity
             try
             {
                 ComboBoxTask.Items.Clear();
-                ComboBoxTask.Items.Add("Все задания");
-                var sectors = _context.StudentSectors.Where(ss => ss.IDStudent == _currentStudentId).Select(ss => ss.Sectors.SectorName).Distinct().ToList();
+                ComboBoxTask.Items.Add("Все сектора");
+                var sectors = _context.StudentSectors.Where(ss => ss.IDStudent == _currentStudentId).OrderBy(ss => ss.Sectors.SectorName).Select(ss => ss.Sectors.SectorName).Distinct().ToList();
                 foreach (var sector in sectors)
                 {
                     ComboBoxTask.Items.Add(sector);
@@ -53,29 +53,22 @@ namespace StudentCouncilActivity
         {
             try
             {
-                var query = from task in _context.EventTasks
-                            join ev in _context.Events on task.IDEvent equals ev.IDEvent
-                            join sec in _context.Sectors on task.IDSector equals sec.IDSector
-                            join ss in _context.StudentSectors on sec.IDSector equals ss.IDSector
-                            where task.Status == "В поиске"
-                                  && ss.IDStudent == _currentStudentId
-                                  && !_context.Registrations.Any(r => r.IDTask == task.IDTask && r.IDStudent == _currentStudentId)
-                            select new
-                            {
-                                task.IDTask,
-                                task.TaskName,
-                                task.TasksDescription,
-                                task.Deadline,
-                                task.Points,
-                                EventName = ev.EventName,
-                                SectorName = sec.SectorName,
-                                task.IDSector
-                            };
+                var query = from task in _context.EventTasks join ev in _context.Events on task.IDEvent equals ev.IDEvent join sec in _context.Sectors on task.IDSector equals sec.IDSector join ss in _context.StudentSectors on sec.IDSector equals ss.IDSector where task.Status == "В поиске" && ss.IDStudent == _currentStudentId && !_context.Registrations.Any(r => r.IDTask == task.IDTask && r.IDStudent == _currentStudentId) select new
+                {
+                    task.IDTask,
+                    task.TaskName,
+                    task.TasksDescription,
+                    task.Deadline,
+                    task.Points,
+                    EventName = ev.EventName,
+                    SectorName = sec.SectorName,
+                    task.IDSector
+                };
                 if (!string.IsNullOrEmpty(sectorFilter) && sectorFilter != "Все задания")
                 {
                     query = query.Where(t => t.SectorName == sectorFilter);
                 }
-                DataGridTasks.ItemsSource = query.ToList();
+                DataGridTasks.ItemsSource = query.OrderBy(t => t.Deadline).ToList();
             }
             catch (Exception ex)
             {

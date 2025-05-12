@@ -5,14 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:StudentCouncilActivity"
       mc:Ignorable="d" 
-            d:DesignHeight="450" d:DesignWidth="800"
-    Title="Сектор">
+      d:DesignHeight="515" d:DesignWidth="1000"
+    Title="Сектора">
 
     <Grid Background="White">
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Width="402" HorizontalAlignment="Left" Margin="30,30,0,30"/>
-        <Button x:Name="DeleteMember" Content="Удалить сектор" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,145,30,0" VerticalAlignment="Top" Height="40" Width="250"/>
-        <Button x:Name="ExitFromSectors" Content="Просмотр участников" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,88,30,0" VerticalAlignment="Top" Height="40" Width="250"/>
-        <Button x:Name="JoinFromSectors" Content="Добавить сектор" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="JoinFromSectors_Click"/>
-        <ComboBox HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="40" Width="250"/>
+        <DataGrid x:Name="DataGridSectorsMember" AutoGenerateColumns="False" IsReadOnly="True" Width="640" HorizontalAlignment="Left" Margin="30,30,0,30" Style="{StaticResource DataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"  />
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"  />
+                <DataGridTextColumn Header="Курс" Binding="{Binding Course}"/>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Groupp}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="ShowMembers" Content="Просмотр участников" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,88,30,0" VerticalAlignment="Top" Height="40" Width="250" Click="ShowMembers_Click"/>
+        <Button x:Name="DeleteSector" Content="Удалить сектор" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,145,30,0" VerticalAlignment="Top" Height="40" Width="250" Click="DeleteSector_Click"/>
+        <Button x:Name="AddSector" Content="Добавить сектор" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="JoinFromSectors_Click"/>
+        <ComboBox x:Name="ComboBoxSectors" HorizontalAlignment="Right" Margin="0,30,30,0" VerticalAlignment="Top" Height="40" Width="250" FontFamily="FuturaBookC" FontSize="18" Foreground="Black" Background="White"/>
+        <Button x:Name="ReportMembers" Content="Отчёт по сектору" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,203,30,0" VerticalAlignment="Top" Height="40" Width="250" Click="ReportMembers_Click"/>
     </Grid>
 </Page>

@@ -9,7 +9,7 @@
       Title="Мероприятия">
 
     <Grid Background="White" >
-        <DataGrid x:Name="DataGridEvents" AutoGenerateColumns="False" IsReadOnly="True" Width="660" HorizontalAlignment="Left" Margin="30,30,0,30">
+        <DataGrid x:Name="DataGridEvents" AutoGenerateColumns="False" IsReadOnly="True" Width="660" HorizontalAlignment="Left" Margin="30,30,0,30" Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding EventName}"  />
                 <DataGridTextColumn Header="Дата начала" Binding="{Binding StartDate, StringFormat=dd.MM.yyyy}"/>
@@ -21,7 +21,7 @@
         <Button x:Name="FilterEvents" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="FilterEvents_Click"/>
         <ComboBox x:Name="ComboBoxEvents" HorizontalAlignment="Right" Margin="0,0,30,80" VerticalAlignment="Bottom" Height="35" Width="250">
             <TextBlock FontFamily="FuturaBookC" FontSize="18">Все мероприятия</TextBlock>
-            <TextBlock FontFamily="FuturaBookC" FontSize="18">Ваши созданные мероприятия</TextBlock>
+            <TextBlock FontFamily="FuturaBookC" FontSize="18">Ваши мероприятия</TextBlock>
             <TextBlock FontFamily="FuturaBookC" FontSize="18">Новые мероприятия</TextBlock>
             <TextBlock FontFamily="FuturaBookC" FontSize="18">Прошедшие мероприятия</TextBlock>
         </ComboBox>

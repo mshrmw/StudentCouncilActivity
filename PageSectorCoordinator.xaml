@@ -9,7 +9,7 @@
     Title="Сектор">
 
     <Grid Background="White">
-        <DataGrid x:Name="DataGridSectorsMember" AutoGenerateColumns="False" IsReadOnly="True" Width="391" HorizontalAlignment="Left" Margin="30,60,0,80">
+        <DataGrid x:Name="DataGridSectorsMember" AutoGenerateColumns="False" IsReadOnly="True" Width="391" HorizontalAlignment="Left" Margin="30,60,0,80" Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"  />
                 <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
@@ -26,7 +26,7 @@
         </ComboBox>
         <Button x:Name="FilterSectors" Content="Отфильтровать" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,288,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="FilterSectors_Click"/>
         <Button x:Name="DeleteMember" Content="Удалить участника" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Left" Margin="100,0,0,30" VerticalAlignment="Bottom" Height="40" Width="250" Click="DeleteMember_Click"/>
-        <DataGrid x:Name="DataGridSectors" AutoGenerateColumns="False" IsReadOnly="True" Width="508" HorizontalAlignment="Right" Margin="0,60,30,130">
+        <DataGrid x:Name="DataGridSectors" AutoGenerateColumns="False" IsReadOnly="True" Width="508" HorizontalAlignment="Right" Margin="0,60,30,130" Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding SectorName}"  />
                 <DataGridTextColumn Header="Описание" Binding="{Binding Descriptions}"/>

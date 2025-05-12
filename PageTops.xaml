@@ -9,7 +9,7 @@
       Title="Рейтинг">
 
     <Grid Background="White">
-        <DataGrid x:Name="DataGridTops" AutoGenerateColumns="False" IsReadOnly="True" Width="450" Height="450" HorizontalAlignment="Center">
+        <DataGrid x:Name="DataGridTops" AutoGenerateColumns="False" IsReadOnly="True" Width="450" Height="450" HorizontalAlignment="Center" Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Место" Binding="{Binding Position}"/>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"  />

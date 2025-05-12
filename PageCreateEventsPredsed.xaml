@@ -25,11 +25,9 @@
         <Label Content="*" HorizontalAlignment="Right" Margin="0,190,290,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
         <DatePicker x:Name="EndDate" HorizontalAlignment="Left" Margin="30,318,0,0" VerticalAlignment="Top" Width="444" Height="40" FontSize="22" FontFamily="FuturaBookC"/>
         <Label Content="Организатор" HorizontalAlignment="Right" Margin="0,282,350,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="#1F1F1F"/>
-        <TextBox x:Name="OrganizatorEvent" TextWrapping="Wrap" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Right" Width="444" Height="40" VerticalAlignment="Top" Margin="0,318,30,0"/>
         <Label Content="*" HorizontalAlignment="Right" Margin="0,280,340,0" VerticalAlignment="Top" FontFamily="FuturaBookC" FontSize="22" Foreground="Red"/>
-
         <Button x:Name="SaveCreateEvent" Content="Сохранить" Style="{DynamicResource PageButtonActivity}" FontSize="20" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Height="40" Width="444" Click="SaveCreateEvent_Click"/>
         <Button x:Name="Cancel" Content="Отменить" Style="{DynamicResource PageButton}" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,30" VerticalAlignment="Bottom" Height="40" Width="444" Click="Cancel_Click"/>
-        
+        <ComboBox x:Name="OrganizatorEvent" FontSize="22" FontFamily="FuturaBookC" HorizontalAlignment="Right" Width="444" Height="40" VerticalAlignment="Top" Margin="0,318,30,0"/>
     </Grid>
 </Page>

@@ -54,27 +54,21 @@ namespace StudentCouncilActivity
         {
             try
             {
-                var query = from reg in _context.Registrations
-                            join task in _context.EventTasks on reg.IDTask equals task.IDTask
-                            join ev in _context.Events on task.IDEvent equals ev.IDEvent
-                            join sec in _context.Sectors on task.IDSector equals sec.IDSector
-                            join student in _context.Students on reg.IDStudent equals student.IDStudent
-                            where ev.IDOrganizer == _currentStudentId 
-                            select new
-                            {
-                                reg.IDRegistration,
-                                student.LastName,
-                                student.FirstName,
-                                student.MiddleName,
-                                TaskName = task.TaskName,
-                                task.Deadline,
-                                EventName = ev.EventName,
-                                SectorName = sec.SectorName,
-                                reg.RegistrationStatus,
-                                reg.IDTask,
-                                reg.IDStudent,
-                                task.IDEvent
-                            };
+                var query = from reg in _context.Registrations join task in _context.EventTasks on reg.IDTask equals task.IDTask join ev in _context.Events on task.IDEvent equals ev.IDEvent join sec in _context.Sectors on task.IDSector equals sec.IDSector join student in _context.Students on reg.IDStudent equals student.IDStudent where ev.IDOrganizer == _currentStudentId select new
+                {
+                    reg.IDRegistration,
+                    student.LastName,
+                    student.FirstName,
+                    student.MiddleName,
+                    TaskName = task.TaskName,
+                    task.Deadline,
+                    EventName = ev.EventName,
+                    SectorName = sec.SectorName,
+                    reg.RegistrationStatus,
+                    reg.IDTask,
+                    reg.IDStudent,
+                    task.IDEvent
+                };
                 if (eventId != null)
                 {
                     query = query.Where(x => x.IDEvent == eventId);
@@ -95,7 +89,7 @@ namespace StudentCouncilActivity
                     }
                     query = query.Where(x => x.RegistrationStatus == statusFilter);
                 }
-                DataGridTasks.ItemsSource = query.OrderBy(x => x.Deadline).ToList();
+                DataGridTasks.ItemsSource = query.OrderBy(x => x.Deadline).ThenBy(x => x.TaskName).ThenBy(x => x.LastName).ThenBy(x => x.FirstName).ThenBy(x => x.MiddleName).ToList();
             }
             catch (Exception ex)
             {

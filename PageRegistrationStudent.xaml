@@ -10,7 +10,7 @@
 
     <Grid Background="White">
         <Label Content="Какое задание хотите выполнить?" FontFamily="FuturaBookC" FontSize="22" HorizontalAlignment="Left" Margin="25,15,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="DataGridTasks" AutoGenerateColumns="False" IsReadOnly="True" Width="940" HorizontalAlignment="Center" Margin="0,50,0,115">
+        <DataGrid x:Name="DataGridTasks" AutoGenerateColumns="False" IsReadOnly="True" Width="940" HorizontalAlignment="Center" Margin="0,50,0,115" Style="{StaticResource DataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding TaskName}"  />
                 <DataGridTextColumn Header="Описание" Binding="{Binding TasksDescription}"/>

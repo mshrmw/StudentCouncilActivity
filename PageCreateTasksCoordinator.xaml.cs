@@ -30,6 +30,7 @@ namespace StudentCouncilActivity
             _coordinatorWindow = coordinatorWindow;
             _currentStudentId = App.CurrentStudentId;
             LoadEvents();
+            EventDeadline();
             _coordinatorWindow.Tasks.Style = (Style)FindResource("ShapkaButtonActivity");
             _coordinatorWindow.Events.Style = (Style)FindResource("ShapkaButton");
         }
@@ -57,8 +58,14 @@ namespace StudentCouncilActivity
         {
             if (NameEventComboBox.SelectedItem != null)
             {
+                EventDeadline();
                 LoadSectorsBasedOnEventSelection();
             }
+        }
+        private void EventDeadline()
+        {
+            var selectedEvent = (Events)NameEventComboBox.SelectedItem;
+            EndDate.SelectedDate = selectedEvent.StartDate;
         }
         private void LoadSectorsBasedOnEventSelection()
         {
@@ -68,7 +75,7 @@ namespace StudentCouncilActivity
                 List<Sectors> sectors;
                 if (selectedEvent.IDOrganizer == _currentStudentId)
                 {
-                    sectors = _context.Sectors.ToList();
+                    sectors = _context.Sectors.OrderBy(s => s.SectorName).ToList();
                 }
                 else
                 {
@@ -88,6 +95,7 @@ namespace StudentCouncilActivity
                 MessageBox.Show($"Ошибка загрузки секторов: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Вы точно хотите отменить регистрацию задания?", "Подтверждение выхода", MessageBoxButton.YesNo, MessageBoxImage.Question);

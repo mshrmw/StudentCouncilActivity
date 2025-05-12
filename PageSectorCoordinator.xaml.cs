@@ -62,14 +62,14 @@ namespace StudentCouncilActivity
             try
             {
                 var members = _context.StudentPositions.Where(sp => sp.IDSector == _coordinatorSectorId && sp.IDPosition == 1 && sp.EndDate == null).Join(_context.Students, sp => sp.IDStudent, s => s.IDStudent, (sp, s) => new
-                        {
-                            s.LastName,
-                            s.FirstName,
-                            s.MiddleName,
-                            s.Course,
-                            s.Groupp,
-                            s.IDStudent
-                        }).ToList();
+                {
+                    s.LastName,
+                    s.FirstName,
+                    s.MiddleName,
+                    s.Course,
+                    s.Groupp,
+                    s.IDStudent
+                }).OrderBy(m => m.LastName).ThenBy(m => m.FirstName).ThenBy(m => m.MiddleName).ToList();
                 DataGridSectorsMember.ItemsSource = members;
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace StudentCouncilActivity
         {
             try
             {
-                var sectors = _context.Sectors.ToList();
+                var sectors = _context.Sectors.OrderBy(s => s.SectorName).ToList();
                 DataGridSectors.ItemsSource = sectors;
             }
             catch (Exception ex)
@@ -93,7 +93,7 @@ namespace StudentCouncilActivity
         {
             try
             {
-                var sector = _context.StudentSectors.Where(ss => ss.IDStudent == _currentStudentId).Select(ss => ss.Sectors).ToList();
+                var sector = _context.StudentSectors.Where(ss => ss.IDStudent == _currentStudentId).Select(ss => ss.Sectors).OrderBy(s => s.SectorName).ToList();
                 DataGridSectors.ItemsSource = sector;
             }
             catch (Exception ex)

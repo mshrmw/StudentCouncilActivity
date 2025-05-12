@@ -58,12 +58,12 @@ namespace StudentCouncilActivity
                     MessageBox.Show("Укажите место проведения мероприятия!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                if (EndDate.SelectedDate != null && EndDate.SelectedDate < StartDate.SelectedDate)
+                if (EndDate.SelectedDate != null && EndDate.SelectedDate <= StartDate.SelectedDate)
                 {
                     MessageBox.Show("Дата окончания не может быть раньше даты начала!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                if (StartDate.SelectedDate < DateTime.Today)
+                if (StartDate.SelectedDate <= DateTime.Today)
                 {
                     MessageBox.Show("Дата начала мероприятия должна быть позже сегодняшней даты!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
@@ -78,6 +78,13 @@ namespace StudentCouncilActivity
                     IDOrganizer = _currentStudentId 
                 };
                 _context.Events.Add(newEvent);
+                _context.SaveChanges();
+                var participation = new StudentEventParticipation
+                {
+                    IDStudent = _currentStudentId,
+                    IDEvent = newEvent.IDEvent
+                };
+                _context.StudentEventParticipation.Add(participation);
                 _context.SaveChanges();
                 MessageBox.Show("Мероприятие успешно создано! Теперь вы можете добавить задачи", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 _coordinatorWindow.mainFrame.Navigate(new PageCreateTasksCoordinator(_coordinatorWindow));
