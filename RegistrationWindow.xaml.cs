@@ -117,7 +117,11 @@ namespace StudentCouncilActivity
                 MessageBox.Show("Все обязательные поля должны быть заполнены", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            int studentCard = Convert.ToInt32(CardNumber);
+            if (!int.TryParse(CardNumber, out int studentCard))
+            {
+                MessageBox.Show("Номер билета должен содержать только цифры!");
+                return false;
+            }
             using (var db = new studDB())
             {
                 var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == log);
