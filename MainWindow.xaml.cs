@@ -85,12 +85,12 @@ namespace StudentCouncilActivity
         {
             try
             {
-                if (string.IsNullOrEmpty(log) && string.IsNullOrEmpty(password))
+                if (string.IsNullOrEmpty(log) || log == "Введите логин" && string.IsNullOrEmpty(password))
                 {
                     MessageBox.Show("Введите логин и пароль");
                     return false;
                 }
-                if (string.IsNullOrEmpty(log))
+                if (string.IsNullOrEmpty(log) || log == "Введите логин")
                 {
                     MessageBox.Show("Введите логин");
                     return false;
