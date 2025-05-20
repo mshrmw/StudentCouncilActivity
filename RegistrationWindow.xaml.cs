@@ -27,9 +27,17 @@ namespace StudentCouncilActivity
         }
         private void HyperlinkClick(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            try
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при открытии окна регистрации: {ex.Message}");
+            }
+
         }
         private bool IsValidEmail(string email)
         {
@@ -93,9 +101,17 @@ namespace StudentCouncilActivity
         }
         public static string GetHash(string password)
         {
-            using (var hash = SHA1.Create())
+            try
             {
-                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+                using (var hash = SHA1.Create())
+                {
+                    return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при хешировании пароля: {ex.Message}");
+                return string.Empty;
             }
         }
         private void ButtonReg(object sender, RoutedEventArgs e)
@@ -247,6 +263,11 @@ namespace StudentCouncilActivity
                     this.Close();
                     return true;
                 }
+            }
+            catch (System.Data.Entity.Core.EntityException ex)
+            {
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}");
+                return false;
             }
             catch (Exception ex)
             {

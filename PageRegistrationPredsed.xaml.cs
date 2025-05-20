@@ -54,7 +54,7 @@ namespace StudentCouncilActivity
         {
             try
             {
-                var query = from task in _context.EventTasks join ev in _context.Events on task.IDEvent equals ev.IDEvent join sec in _context.Sectors on task.IDSector equals sec.IDSector where task.Status == "В поиске" && !_context.Registrations.Any(r => r.IDTask == task.IDTask && r.IDStudent == _currentStudentId) select new
+                var query = from task in _context.EventTasks join ev in _context.Events on task.IDEvent equals ev.IDEvent join sec in _context.Sectors on task.IDSector equals sec.IDSector where task.Status == "В поиске" && task.Deadline >= DateTime.Today && !_context.Registrations.Any(r => r.IDTask == task.IDTask && r.IDStudent == _currentStudentId) select new
                 {
                     task.IDTask,
                     task.TaskName,
